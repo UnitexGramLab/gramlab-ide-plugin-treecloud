@@ -1,37 +1,43 @@
-# Unitex/GramLab IDE Skeleton plugin
+# Unitex/GramLab IDE treeCloud plugin
 
 > [Unitex/GramLab][unitexgramlab] is an open source, cross-platform, multilingual,
 lexicon- and grammar-based corpus processing suite
 
 ## NAME
 
-plugin name - short description (no more than 60 chars)
+TreeCloud is used to visualize the concordance in the form of a tree cloud, where branches reflect semantic distance between the words 
 
 ## SYNOPSIS
 
-Synopsis means "see together" and shows example usage.
+In order to visualize the concordance, be sure that the HTML-file "concord.html" is present. 
 
 ## INSTALLATION
 
 To install this plugin you can download the latest `.zip` release from
-[here](https://github.com/UnitexGramLab/gramlab-ide-plugin-skel/releases/latest)
+[here](https://github.com/UnitexGramLab/gramlab-ide-plugin-treecloud/releases/latest)
 and manually copy it to your `App/plugins` directory.
 
 ## DESCRIPTION
 
-Contains a long description of what this plugin does and lists functions.
+TreeCloud standalone application was originally developped by Philippe Gambette (). It was converted into GramLab plugin 
+in order to build treecloud right in the GramLab. TreeCloud uses algorithm created by Philippe Gambette
+to compute distances between the words. NeighborJoining algorithm (Saitou, Nei 1987) for computing the tree from distances and
+EqualAngle algorithm for building the tree. The tree is renderred in SVG format using Apache Batik SVG Toolkit. You can export the tree into
+several formats: Newick, SVG, PDF, JPEG. For more information please refer to the TreeCloud manual ().
 
 ## CAVEATS
 
-Tells about bugs or issues the user should know about.
+The SVG picture is not dynamic, that is, there is not yet possibility to zoom or rotate the picture. Moreover, there is no possibility to drag the words
+in case they are overlapping each other. These functionalities will be added in the next version. Stopwords can be removed only from trees built on English,
+French, Spanish, Portuguese and German languages.   
 
 ## CONTRIBUTING
 
-Tells about how to contribute to the development of this plugin. 
+You can improve the plugin by reporting about the bugs or posting the issues [here](https://github.com/UnitexGramLab/gramlab-ide-plugin-treecloud/issues).
 
 ## AUTHOR
 
-Author Name <author.name@example.org>
+Aleksandra Chashchina <chaschina.aleksandra@gmail.com>
 
 ## SEE ALSO
 
