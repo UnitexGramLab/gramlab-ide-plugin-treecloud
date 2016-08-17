@@ -38,6 +38,7 @@ public class TreeSVG {
 		Element svgRoot = doc.getDocumentElement();
 		svgRoot.setAttributeNS(null, "width", "500");
 		svgRoot.setAttributeNS(null, "height", "500");
+		svgRoot.setAttributeNS(null, "viewBox", getViewBox(nodes));
 		for(int i=0; i<nodes.size(); i++){
 	
 				Element path = doc.createElementNS(svgNS, "path");
@@ -105,22 +106,9 @@ public class TreeSVG {
 				
 			}
 				
-	}
-    JSVGCanvas c = new JSVGCanvas();
-	c.setSVGDocument((SVGDocument) doc);
-	JSVGScrollPane scroll = new JSVGScrollPane(c);
-	scroll.add(c);
-	
-	System.out.println(getViewBox(nodes));
-
-	JFrame f = new JFrame("TreeCloud");
-	f.setSize(500,500);
-	
-	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	f.getContentPane().add(scroll);
-	f.setVisible(true);
+		}
 	return doc;
-			}
+	}
 	
 	private static String getViewBox(ArrayList<TreeNode> nodes){
 		ArrayList<Double> allX = new ArrayList<Double>();
