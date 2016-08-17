@@ -6,15 +6,15 @@ import javax.xml.transform.TransformerException;
 
 import org.apache.batik.apps.rasterizer.SVGConverterException;
 import org.apache.batik.transcoder.TranscoderException;
-import org.gramlab.core.GramlabConfigManager;
-import org.gramlab.core.gramlab.project.GramlabProject;
+import org.gramlab.core.gramlab.project.GramlabProjectManager;
+import org.gramlab.core.umlv.unitex.common.project.manager.GlobalProjectManager;
+import org.gramlab.core.umlv.unitex.config.ConfigManager;
 
 import ro.fortsoft.pf4j.Extension;
 
 
 /**
  * Main class of the TreeCloud plugin
- * (currently works only on trees from TestData)
  * @author Aleksandra Chashchina
  *
  */
@@ -24,20 +24,17 @@ public class TreeCloud implements GramlabMenu {
 	public void drawTreeCloud() throws IOException, InterruptedException, TransformerException, SVGConverterException, TranscoderException{
 		
 		/*
-		 * Get parameters from Gramlab project manager
+		 * Get parameters from Gramlab
 		 */
-		GramlabProject p = GramlabConfigManager.getCurrentProject();
-		String corpus = p.getCorpusDirectory().getAbsolutePath();
-		String lang = p.getLanguage();
 		
+		String c = GlobalProjectManager.getAs(GramlabProjectManager.class).getCurrentProject().getCurrentSntDir().getAbsolutePath();
+		String lang = GlobalProjectManager.getAs(GramlabProjectManager.class).getCurrentProject().getLanguage();
+				
 		Tree t = new Tree();
-		t.setCorpusPath(corpus);
+		t.setCorpusPath(c);
 		t.findFiles(t.corpuspath);
-		t.setStatsOutput(t.concordhtml);
 		t.removestopwords = true;
 		t.setLanguage(lang);
-		//t.setAlphabetPath(TestData.getTestAlphabetPath());
-		//t.setMinNbOccur(1);
 		t.setNumberOfTaxa(30);
 		t.colormode = "Red & blue";
 		
@@ -46,9 +43,6 @@ public class TreeCloud implements GramlabMenu {
 		t.performEqualAngle();
 		
 		t.drawTree();
-		//TreeExport.exportAsJpeg(t.getSvgDoc(), "C:/mytestoutput.jpg");
-		//TreeExport.exportAsSvg(t.getSvgDoc(), "C:/mytestout.svg");
-		//TreeExport.exportAsNewick(t.getNewickTree(), "C:/newicktestoutput.newick");
-	}
+	    }
 
 }
