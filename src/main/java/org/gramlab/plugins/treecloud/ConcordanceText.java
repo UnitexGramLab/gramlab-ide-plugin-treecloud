@@ -674,9 +674,6 @@ public class ConcordanceText {
     	edgecolor = "#CCCCFF";
     	Map<String, Double> positions = new HashMap<String, Double>();
     	Map<String, Double> dispersion = new HashMap<String, Double>();
-    	if(color.equals("Grayscale")){
-    		edgecolor = "#CCCCFF";
-    	}
     	int chronology = 0;
     	if(color.equals("chronology")){
     		chronology = 1;
@@ -693,7 +690,7 @@ public class ConcordanceText {
     		positions = locations.get(0);
     		dispersion = locations.get(1);
     	}
-    	if(color.equals("target")){
+    	if(color.equals("Target")){
     		chronology += 1;
     		ArrayList<Map<String, Double>> locations = computeCooccurrenceColors(locatetarget, text, keptWordsId, distance);
     		
@@ -724,15 +721,15 @@ public class ConcordanceText {
     			    averagepos = (int) Math.max(0, Math.floor(dispersion.get(node.name)*255.0/100));
     				averagepos2 = (int) Math.max(0, Math.floor(255-dispersion.get(node.name)*255.0/100));
     			}
-    			node.fontcolor = " rgb(" + averagepos2 + "," + "0" + "," + averagepos + ")";
-    			node.fontsize = fontsizelevel[(int) (1+9.99999*(Math.log(frequencies[keptWordsId.get(node.name)])-Math.log(themin))/(Math.log(themax)-Math.log(themin)))];
+    			node.setColor(" rgb(" + averagepos2 + "," + "0" + "," + averagepos + ")");
+    			node.setSize(fontsizelevel[(int) (1+9.99999*(Math.log(frequencies[keptWordsId.get(node.name)])-Math.log(themin))/(Math.log(themax)-Math.log(themin)))]);
     		}else{
     			if(color.equals("Grayscale")){
-    				node.fontcolor = fontcolorberry[(int) (1+9.99999*(Math.log(frequencies[keptWordsId.get(node.name)])-Math.log(themin))/(Math.log(themax)-Math.log(themin)))];
-    				node.fontsize = fontsizelevel[(int) (1+9.99999*(Math.log(frequencies[keptWordsId.get(node.name)])-Math.log(themin))/(Math.log(themax)-Math.log(themin)))];
+    				node.setColor(fontcolorberry[(int) (1+9.99999*(Math.log(frequencies[keptWordsId.get(node.name)])-Math.log(themin))/(Math.log(themax)-Math.log(themin)))]);
+    				node.setSize(fontsizelevel[(int) (1+9.99999*(Math.log(frequencies[keptWordsId.get(node.name)])-Math.log(themin))/(Math.log(themax)-Math.log(themin)))]);
     			}else if(color.equals("Red & blue")){
-    				node.fontcolor = fontcoloryahoo[(int) (1+9.99999*(Math.log(frequencies[keptWordsId.get(node.name)])-Math.log(themin))/(Math.log(themax)-Math.log(themin)))];
-    				node.fontsize = fontsizelevel[(int) (1+9.99999*(Math.log(frequencies[keptWordsId.get(node.name)])-Math.log(themin))/(Math.log(themax)-Math.log(themin)))];
+    				node.setColor(fontcoloryahoo[(int) (1+9.99999*(Math.log(frequencies[keptWordsId.get(node.name)])-Math.log(themin))/(Math.log(themax)-Math.log(themin)))]);
+    				node.setSize(fontsizelevel[(int) (1+9.99999*(Math.log(frequencies[keptWordsId.get(node.name)])-Math.log(themin))/(Math.log(themax)-Math.log(themin)))]);
     			}
     			
     		}
