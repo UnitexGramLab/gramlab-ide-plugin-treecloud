@@ -12,8 +12,7 @@ import org.w3c.dom.Document;
 
 /**
  * Class used to compute tree from Concordance file
- * (currently impossible to use as the distance matrix is too big
- * and NJ algorithm works very slowly)
+ *
  * @author Aleksandra Chashchina
  *
  */
@@ -57,6 +56,10 @@ public class Tree {
 		this.language = lang;
 	}
 	
+	public void setColorMode(String color){
+		this.colormode = color;
+	}
+	
 	public void setMinNbOccur(int n){
 		this.minNmbOfOccur = n;
 	}
@@ -96,22 +99,22 @@ public class Tree {
 	
 	public String getStopWordsFile(String workinglanguage){
 		
-		if(workinglanguage.equals("English") | workinglanguage.equals("French")){
-			return "StoplistEnglishFrench.txt";
+		if(workinglanguage.equals("en") | workinglanguage.equals("fr")){
+			return "resources/StoplistEnglishFrench.txt";
 			
-		}else if(workinglanguage.equals("German")){
-			return "StoplistGerman.txt";
+		}else if(workinglanguage.equals("de")){
+			return "resources/StoplistGerman.txt";
 		
-		}else if(workinglanguage.equals("Portuguese")){
-			return "StoplistPortuguese.txt";
+		}else if(workinglanguage.equals("pt")){
+			return "resources/StoplistPortuguese.txt";
 		
-		}else if(workinglanguage.equals("Italian")){
-			return "StoplistItalian.txt";
+		}else if(workinglanguage.equals("it")){
+			return "resources/StoplistItalian.txt";
 			
-		}else if(workinglanguage.equals("Spanish")){
-			return "StoplistSpanish.txt";
+		}else if(workinglanguage.equals("es")){
+			return "resources/StoplistSpanish.txt";
 		}else{
-			System.out.println("Stoplist not available");
+			JOptionPane.showMessageDialog(null, "Stopwords list is not available for this language. Stopwords will not be removed");
 			return null;
 		}
 		
