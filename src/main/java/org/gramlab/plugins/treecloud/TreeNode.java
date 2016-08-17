@@ -56,5 +56,13 @@ public class TreeNode {
 	public void setAsLeaf(){
 		this.isLeaf = true;
 	}
+	
+	public void setColor(String c){
+		this.fontcolor = c;
+	}
+	
+	public void setSize(String s){
+		this.fontsize = s;
+	}
 
 }
