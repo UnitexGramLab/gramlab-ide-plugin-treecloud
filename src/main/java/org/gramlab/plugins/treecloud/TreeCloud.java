@@ -4,12 +4,15 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 import javax.swing.AbstractAction;
+import javax.swing.Icon;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.xml.transform.TransformerException;
 
 import org.apache.batik.apps.rasterizer.SVGConverterException;
 import org.apache.batik.transcoder.TranscoderException;
+import org.gramlab.core.gramlab.icons.Icons;
 import org.gramlab.core.gramlab.project.GramlabProjectManager;
 import org.gramlab.core.umlv.unitex.common.project.manager.GlobalProjectManager;
 import org.gramlab.core.umlv.unitex.config.ConfigManager;
@@ -25,7 +28,7 @@ import ro.fortsoft.pf4j.Extension;
 @Extension
 public class TreeCloud implements GramlabMenu {
 	
-	public void AddMenu() throws IOException, InterruptedException, TransformerException, SVGConverterException, TranscoderException{
+	public JMenu AddMenu() throws IOException, InterruptedException, TransformerException, SVGConverterException, TranscoderException{
 		
 		JMenu m = new JMenu("TreeCloud");
 		
@@ -34,12 +37,16 @@ public class TreeCloud implements GramlabMenu {
 		 * Get parameters from Gramlab
 		 */
 			public void actionPerformed(ActionEvent e){
-				String c = GlobalProjectManager.getAs(GramlabProjectManager.class).getCurrentProject().getCurrentSntDir().getAbsolutePath();
+				String c = GlobalProjectManager.getAs(GramlabProjectManager.class).getCurrentProject().getCorpusDirectory().getAbsolutePath();
 				String lang = GlobalProjectManager.getAs(GramlabProjectManager.class).getCurrentProject().getLanguage();
 						
 				Tree t = new Tree();
 				t.setCorpusPath(c);
 				t.findFiles(t.corpuspath);
+				if(t.concordhtml==null){
+					String path = JOptionPane.showInputDialog("Cannot find concord.html file. Please enter absolute path to concord.html:");
+					t.concordhtml = path;
+					};
 				t.removestopwords = true;
 				t.setLanguage(lang);
 				t.setNumberOfTaxa(30);
@@ -56,6 +63,8 @@ public class TreeCloud implements GramlabMenu {
 			}
 		
 	    });
+		m.add(tr);
+		return m;
 
 }
 }
