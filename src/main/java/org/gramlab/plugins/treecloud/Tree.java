@@ -3,9 +3,10 @@ package org.gramlab.plugins.treecloud;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.swing.JOptionPane;
 
 import org.w3c.dom.Document;
 
