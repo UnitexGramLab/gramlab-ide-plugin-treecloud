@@ -35,5 +35,6 @@
 	<classpathentry kind="lib" path="C:/Users/SONY/Desktop/GSoC/treecloud/gramlab-ide-plugin-treecloud/src/main/resources/xerces_2_5_0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/SONY/Desktop/GSoC/treecloud/gramlab-ide-plugin-treecloud/src/main/resources/xml-apis.jar"/>
 	<classpathentry kind="lib" path="C:/Users/SONY/Desktop/GSoC/treecloud/gramlab-ide-plugin-treecloud/src/main/resources/xml-apis-ext.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/gramlab-ide"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
